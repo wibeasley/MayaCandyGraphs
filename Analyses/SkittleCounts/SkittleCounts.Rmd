@@ -1,0 +1,72 @@
+Maya's First Computer Graph
+=================================================
+This report covers Maya's first graph on the computer (Maya Beasley, PI).  She loves doing graphs on the computer, especially picking the colors.
+
+<!--  Set the working directory to the repository's base directory; this assumes the report is nested inside of two directories.-->
+```{r, echo=F, message=F} 
+# cat("Working directory: ", getwd())
+
+  knitr::opts_knit$set(root.dir='../../')  #Don't combine this call with any other chunk -especially one that uses file paths.
+```
+
+<!-- Set the report-wide options, and point to the external code file. -->
+```{r set_options, echo=F}
+cat("Working directory: ", getwd())
+require(knitr, quietly=TRUE)
+opts_chunk$set(
+  results='show', 
+  comment = NA, 
+  tidy = FALSE,
+  fig.width = 6.5, 
+  fig.height = 4, 
+  fig.path = 'FigureRaw/'
+)
+
+echoChunks <- FALSE
+options(width=120) #So the output is 50% wider than the default.
+read_chunk("./Analyses/SkittleCounts/SkittleCounts.R") #This allows knitr to call chunks tagged in the underlying *.R file.
+```
+<!-- Load the packages.  Suppress the output when loading packages. --> 
+```{r LoadPackages, echo=echoChunks, message=FALSE}
+```
+
+<!-- Load any Global functions and variables declared in the R file.  Suppress the output. --> 
+```{r DeclareGlobals, echo=echoChunks, results='show', message=FALSE}
+```
+
+<!-- Declare any global functions specific to a Rmd output.  Suppress the output. --> 
+```{r, echo=echoChunks, message=FALSE}
+```
+
+<!-- Load the datasets.   -->
+```{r LoadData, echo=echoChunks, results='show', message=FALSE}
+```
+
+<!-- Tweak the datasets.   -->
+```{r TweakData, echo=echoChunks, results='show', message=FALSE}
+```
+
+## Notes
+
+**Note 1**: The current report covers `r nlevels(ds$Color)` possible values for `Color`.
+
+# Marginals
+```{r Marginals, echo=echoChunks, message=TRUE, results='asis'}
+```
+
+
+
+# Questions
+## Unanswered Questions
+ 1. How long is the graph when all of the colors are at the number '9,999'?
+
+## Answered Questions
+ 1. Does the color get dark on the color wheel when it goes out, or lighter?  The answer is 'it gets darker when it goes out'.
+
+# Session Information
+For the sake of documentation and reproducibility, the current report was build on a system using the following software.
+
+```{r session_info, echo=FALSE}
+cat("Report rendered by", Sys.info()["user"], "at", strftime(Sys.time(), "%Y-%m-%d, %H:%M %z"))
+sessionInfo()
+```
